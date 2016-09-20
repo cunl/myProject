@@ -1,0 +1,28 @@
+<div class="login_title">密码登录</div>
+
+<!--right:66px-->
+<div class="login_tips">
+	<p>扫码登录更安全</p>
+	<div class="point"></div>
+	<div class="point_hide"></div>
+</div>
+<div class="icon icon2"></div>		
+<form class="login_window">
+	<p><label for="username"></label><input type="text" id="username"/><span>手机号/会员名/邮箱</span></p>
+	<p><label for="password"></label><input type="text" id="password"/></p>
+	<button type="submit">登录</button>
+</form>
+
+<p class="login_btn">
+	<a href="#">忘记密码</a>
+	<a href="#">免费注册</a>
+</p>
+
+<script src="../js/jquery-3.1.0.min.js"></script>
+<script>
+	$(function(){
+		$('.icon').on('click',function(){
+			$('.login_box').html('').load('../html/login_1.html');
+		});
+	});
+</script>

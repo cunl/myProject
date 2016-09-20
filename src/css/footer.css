@@ -1,0 +1,14 @@
+.bottom{min-width:990px;border-top: 2px solid #c40000;position: relative;background: #000;padding:10px 36px; }
+.bottom .cat{position: absolute;left: 86px;top: -27px;}
+.bottom a{color: #fff;font-size: 12px;line-height: 25px;}
+.bottom ul a{margin-right:10px;}
+.bottom li{float: left;}
+.bottom .link{color: #fff;}
+.bottom .link a{padding: 0 4px;}
+.bottom .link a:first-child{padding-left: 0;}
+
+.info{color: #a4a4a4;font-size: 12px;padding-bottom: 20px;}
+.info a{color: #a4a4a4;margin-right: 65px;}
+.info a:hover{color: #a4a4a4;}
+.info span:nth-child(4){display: block;line-height: 20px;}
+.info span:nth-child(5){display: block;color:#686868;line-height: 20px;}

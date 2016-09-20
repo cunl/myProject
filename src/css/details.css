@@ -1,0 +1,30 @@
+.wrap{width:100%;}
+
+.title{height: 100px;width: 1200px;margin: 0 auto;position: relative;}
+.title img{margin:34px 0;float: left;}
+.title form{float:left;margin: 30px 0 0 120px;}
+.title input{width: 456px;height: 36px;border: 2px solid #B61D1D;float: left;text-indent: 10px;color: rgb(153,153,153);}
+.title button{height:42px;width: 82px;background: #B61D1D;float: left;border:none;font-size: 18px;color: #fff;font-weight: bold;}
+
+.title form a{width: 141px;height: 36px;display: block;background: #F9F9F9;border:1px solid #DFDFDF;float: left;margin-left: 100px;color: #666;position: absolute;right: 104px;top:32px;}
+.title form a span{height:20px;width: 20px;display:inline-block;background:url(img/detailcart.png) no-repeat left -56px;margin:10px 6px 0 16px ;float: left;}
+.title form a i{margin-top: 14px;float: left;}
+
+.hidecart{width: 308px;background: #fff;border:1px solid #ddd;box-shadow: 0 0 5px rgba(0,0,0,0.2);position: absolute;right:104px;top:74px;display: none;}
+.title .hidea{background: #fff;border:1px solid #ddd;box-shadow: 0 0 5px rgba(0,0,0,0.2);height: 50px;border-bottom: none;}
+.title ul {position: absolute;left:310px;bottom:8px;}
+.title li{float: left;}
+.title li a {color:#666;margin-right: 10px;}
+.title li a:hover,.title li .show{color: #C40000;}
+.hidetop{height: 10px;width: 141px;background: #fff;position: absolute;right: 0;top:-6px;}
+.hidecart img{margin-left: 20px;}
+.hidecart p{color: #666;padding-top: 52px;margin-left:90px;}
+
+
+.detail{width: 100%;background: #f2f2f2;}
+
+.topnav{height: 45px;width: 1210px;margin: 0 auto;}
+.topnav a{color: #666;line-height: 45px;font-size: 12px;}
+.food{font-weight: bold;font-size: 20px;display: block;float: left;}
+.topnav li {float: left;margin: 0 10px;}
+.topnav a:hover{color: #C40000;}

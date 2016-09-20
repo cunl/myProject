@@ -1,0 +1,41 @@
+.wrap{width: 100%;}
+.header{width:1050px;height:100px;margin: 0 auto;}
+.header img{margin: 19px 0;}
+.header ul{float: right;}
+.header ul li{height:100px;width: 110px;text-align: center;float: left;line-height:100px;}
+.header ul li a{font-size: 16px;color: #333;}
+.header ul li:nth-child(1) a{color: #d23927;line-height: 100px;}
+
+.banner{height:850px;position: relative;overflow: hidden;}
+.banner div{height: 100%;width: 1263px;}
+.bigimg{background: url(img/bannerlist.jpg) no-repeat center center;position: absolute;left: 0;top: 0;}
+
+.banner .all{width: 1000px;}
+
+.domove{position: absolute;left:390px;top:420px;}
+
+.imgmore{background:url(img/banner2.jpg) no-repeat center top;position: absolute;left:1263px;top:0;}
+.imgmore div{float: left;}
+
+.imgmore .phone{background: url(img/phone_img.png) no-repeat center center;width: 281px;height: 572px;margin:100px 100px;position: relative;}
+.phone img{width:252px;height:452px;position: absolute;}
+.phone ul{width: 252px;height:452px;overflow: hidden;position: absolute;top:57px;left: 15px;}
+
+.imgmore .title{width: 492px;height: 110px;background: url(img/listphone.png) no-repeat bottom left;margin-top: 130px;}
+
+.imgmore .code{height: 170px;width: 170px;background: url(img/listphone.png) no-repeat -424px top;margin: 50px 0 0 50px;}
+.imgmore .down1{width: 165px;height: 56px;background: url(img/listphone.png) no-repeat left top;margin:70px 0 0 20px;}
+.imgmore .down2{width: 165px;height: 56px;background: url(img/listphone.png) no-repeat -194px top;margin:20px 0 0 18px;}
+.imgmore .sent{width: 270px;height: 70px;background: url(img/listphone.png) no-repeat left -100px;margin:70px 0 0 -150px;}
+
+.banner .btn{height:101px;position: absolute;top: 0;left: 0;}
+.banner .btn a{height: 101px;width: 105px;display: block;position: absolute;top: 400px;z-index: 2;}
+
+.prev{background: url(img/prev_button.png) no-repeat center center;left:0;}
+.next{background: url(img/next_button.png) no-repeat center center;right: 0;}
+
+.footer{width:500px;margin: 0 auto;padding:30px 0;}
+.footer ul{width: 480px;height: 25px;}
+.footer ul li{float: left;margin: 0 12px;}
+.footer a{font-size: 14px;color: #000;}
+.footer p{color: #535353;}

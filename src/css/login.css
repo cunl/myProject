@@ -1,0 +1,14 @@
+.title,.banner .div_img{width: 1190px;margin: 0 auto;}
+
+.title{padding: 22px 0;height: 44px;}
+.title img{margin-top: 8px;}
+.banner{width: 100%;background: #c69f82;position: relative;}
+.banner img{margin: 0 auto;}
+.login_box{right:100px;top:106px;}
+
+.wrap .bottom2{min-width:990px;padding:10px 36px;background: #fff;border: none;}
+.wrap .bottom2 ul{margin-top: 30px;}
+.wrap .bottom2  a{color: #000;}
+.wrap .bottom2 p{color: #666;}
+.wrap .bottom2 .link{margin:10px 0;}
+.wrap .bottom2 .info a,.wrap .bottom2 .info span:last-child{color: #999;}

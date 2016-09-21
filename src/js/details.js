@@ -45,6 +45,7 @@ jQuery(function($){
 	var $bigdiv=$('.bigimg');
 	var $bigimg=$bigdiv.find('img');
 	var $simg=$smallimg.find('img');
+	var i=0;
 	
 	//初始化
 	$bigimg.css('opacity',0).eq(0).css({
@@ -55,12 +56,30 @@ jQuery(function($){
 	
 	//移入小图变到对应的大图
 	$smallimg.on('mouseenter','li',function(){
-		var index=$(this).index();
-		$bigimg.eq(index).css('z-index',1).stop().animate({opacity:1}).siblings('img').css({
-			opacity:0,
-			zIndex:0
-		});
-		$simg.css('border','2px solid #fff').eq(index).css('border','2px solid #C40000');
+		i=$(this).index();
+		prevImg();
+	});
+	
+	//prev按钮
+	$('.prev').on('click',function(){
+		if(i==0){
+			i=$simg.length-1;
+		}else{
+			i--;
+		}
+		
+		prevImg();
+	});
+	
+	//next按钮
+	$('.next').on('click',function(){
+		if(i==$simg.length-1){
+			i=0;
+		}else{
+			i++;
+		}
+		
+		prevImg();
 	});
 	
 	//放大镜
@@ -155,4 +174,60 @@ jQuery(function($){
 			top:-bigimgpos.top
 		});
 	});
+	
+//	ajax请求获取产品列表
+	$.ajax({
+		type:"get",
+		url:"../data/loadmessage.json",
+		dataType:'json',
+		success:function(res){
+			$.each(res,function(index,item){
+				var $a=$('<a/>');
+				$('<img/>').attr('src',item.imgsrc).appendTo($a);
+				$spanimg=$('<span/>').addClass('loadspan');
+				var $p=$('<p/>').html(item.message).addClass('loadp');
+				var $loaddiv=$('<div/>').addClass('loaddiv').append([$a,$spanimg,$p]);
+				
+				$('<li/>').append($loaddiv).appendTo($('.loadgoods ul'));
+			})
+		},
+		async:true
+	});
+
+	$.ajax({
+		type:"get",
+		url:"../data/loadmessage2.json",
+		dataType:'json',
+		success:function(res){
+			$.each(res,function(index,item){
+				var $a=$('<a/>');
+				$('<img/>').attr('src',item.imgsrc).appendTo($a);
+				var $p=$('<p/>').html(item.message).addClass('loadp loadp1');
+				
+				var $p2=$('<p/>');
+				var $a1=$('<a/>').html('￥');
+				var $price=$('<span/>').addClass('price').html(item.price).appendTo($a1);
+				var $a2=$('<a/>').html('评论：').attr('id','comment');
+				var $comment=$('<span/>').addClass('comment').html(item.comment).appendTo($a2);
+				$p2.append([$a1,$a2]);
+				
+				var $loaddiv=$('<div/>').addClass('loaddiv').append([$a,$p,$p2]);
+				
+				$('<li/>').append($loaddiv).appendTo($('.loadgoods ul'));
+			})
+		},
+		async:true
+	});
+	
+	$('.bottom').load('footer.html');
+
+	function prevImg(){
+		$bigimg.eq(i).css('z-index',1).stop().animate({opacity:1}).siblings('img').css({
+			opacity:0,
+			zIndex:0
+		});
+		$simg.css('border','2px solid #fff').eq(i).css('border','2px solid #C40000');
+	}
 });
+
+

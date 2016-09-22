@@ -60,7 +60,7 @@ jQuery(function($){
 				left:350
 			});
 		}
-		
+
 		//对应文字光标聚焦时运动
 		if(index==3){
 			$(this).next().stop().animate({
@@ -80,6 +80,7 @@ jQuery(function($){
 		$parent=$(this).closest('.input');
 		index=$parent.index();
 		
+
 		//当光标移开时，如果移开的当前输入框内容为空则显示黄色提示框
 		if(index!=2){
 			if($(this).val()==''){
@@ -162,7 +163,7 @@ jQuery(function($){
 		value=req.test(ele.val());
 		var $thishide=ele.closest('.input').find('.hidediv');
 		var $thishide2=ele.closest('.input').find('.hidediv2');
-		
+
 		if(value){
 			$thishide.css({
 				opacity:0,
@@ -193,15 +194,5 @@ jQuery(function($){
 		if(flag){
 			return -1;
 		}
-	}
-	
-
-	//添加cookie  
-	//oDate.toGMTString()转换成字符串
-	function addCookie(key,value,t)
-	{
-		var oDate=new Date();
-		oDate.setDate(oDate.getDate()+t);
-		document.cookie = key+'='+value+";expires=" + oDate.toGMTString();
 	}
 });

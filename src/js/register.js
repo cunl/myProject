@@ -1,10 +1,9 @@
 jQuery(function($){
-	$('.header').load('header.html');
 	
 	//我的淘宝,收藏夹
 	var $list=$('.nav_div .list');
 	$list.on('mouseenter','li',function(){
-		var $div=$(this).find('div').eq(0)
+		var $div=$(this).find('div').eq(0);
 		$div.css({
 			display:'block'
 		}).prev('a').addClass('active');
@@ -39,42 +38,170 @@ jQuery(function($){
 		$div.css('display','none').prev('a').removeClass('active');		
 	});
 	
-	
-	var arr=['4-20位字符,可由中文、英文、数字或符号“_”组成','请填写正确的手机号码，以便接收订单通知，找回密码',,'6-20个大小写英文字母、符号或数字的组合','请再次输入密码'];
-	var arrblur=['用户名不能为空','格式错误，请输入正确的手机号码',,'密码不能为空',,];
+	//注册验证
+	var req=/^''$/;
+	var index;
+	var $parent;
+	var value;
 	
 	var $input=$('.input');
-	$input.find('input').on('focus',function(){
-		var index=$(this).closest('div').index();
+	$input.on('focus','input',function(){
+		$parent=$(this).closest('.input');
+		index=$parent.index();
 		
+		//当输入框中的内容还没有改变时，但已经有光标的时候，让黄色提示框隐藏
+		if($(this).val()==''){
+			$parent.find('.hidediv2').css({
+				opacity:0,
+				left:332
+			});
+			$parent.find('.hidediv').stop().animate({
+				opacity:1,
+				left:350
+			});
+		}
+		
+		//对应文字光标聚焦时运动
 		if(index==3){
-			$(this).next().animate({
+			$(this).next().stop().animate({
 				left:-90
 			});
 		}else if(index==4 || index==5){
-			$(this).next().animate({
+			$(this).next().stop().animate({
 				left:-78
 			});
 		}else {
-			$(this).next().animate({
+			$(this).next().stop().animate({
 				left:-62
 			});
 		}
+
+	}).on('blur','input',function(){
+		$parent=$(this).closest('.input');
+		index=$parent.index();
 		
-		if(index!=3){
-			var $hidediv=$('<div/>').addClass('hidediv').html(arr[index-1]);
-			var $hideicon=$('<div/>').addClass('hideicon').appendTo($hidediv);
-			$hidediv.appendTo($(this).closest('div'));
+		//当光标移开时，如果移开的当前输入框内容为空则显示黄色提示框
+		if(index!=2){
+			if($(this).val()==''){
+				$parent.find('.hidediv').css({
+					opacity:0,
+					left:332
+				});
+				$parent.find('.hidediv2').stop().animate({
+					opacity:1,
+					left:350
+				});
+			}
 		}
-	}).on('blur',function(){
-		var index=$(this).closest('div').index();
-		
-		$('.hidediv').remove();
-		
-		if(index!=3){
-			var $hidediv1=$('<div/>').addClass('hidediv2').html(arr1[index-1]);
-			var $hideicon1=$('<div/>').addClass('hideicon2').appendTo($hidediv);
-			$hidediv1.appendTo($(this).closest('div'));
+	});
+	
+	var username;
+	var phone;
+	var password;
+	//用户名
+	var $username=$('#username');
+	$username.on('input',function(){
+		//字母或下划线开头 ,中文英文下划线数字
+		req=/^[a-zA-Z_][\w\u4e00-\u9fa5]{3,19}$/;
+		username=register($(this),req);
+	});
+	
+	//手机号码
+	var $phone=$('#phone');
+	$phone.on('input',function(){
+		//手机号码
+		req=/^1[34578]\d{9}$/;
+		phone=register($(this),req);
+	});
+	
+	//输入密码
+	var $password=$('#password');
+	$password.on('input',function(){
+		//输入密码
+		req=/^[a-zA-Z0-9_]{6,20}$/;
+		password=register($(this),req);
+	});
+
+	//确认密码
+	var repassword;
+	$('#resetpassword').on('input',function(){
+		var $thishide=$(this).closest('.input').find('.hidediv');
+		var $thishide2=$(this).closest('.input').find('.hidediv2');
+		if($password.val()==$(this).val()){
+			$thishide.css({
+				opacity:0,
+				left:332
+			});
+			$thishide2.css({
+				opacity:0,
+				left:332
+			});
+			repassword=true;
+		}else{
+			$thishide.css({
+				opacity:1,
+				left:350
+			});
 		}
-	});;
+	});
+	
+	//提交注册
+	$('#agree').on('click',function(){
+		var $allinput=$input.find('input');
+		var i=getindex($allinput);
+		if(i==-1 && username==true && password==true && phone==true && repassword==true){
+			$('#submit').attr('href','../html/login.html');
+			$input.find('input').each(function(index,ele){
+				$(ele).val('');
+			});
+		}
+	});
+
+	//验证表单的函数
+	function register(ele,req){
+		value=req.test(ele.val());
+		var $thishide=ele.closest('.input').find('.hidediv');
+		var $thishide2=ele.closest('.input').find('.hidediv2');
+		
+		if(value){
+			$thishide.css({
+				opacity:0,
+				left:332
+			});
+			
+			return true;
+		}else{
+			$thishide.stop().animate({
+				opacity:1,
+				left:350
+			});
+			$thishide2.stop().animate({
+				opacity:0,
+				left:332
+			});
+		}
+	}
+	
+	function getindex(eles){
+		var flag=true;
+		eles.each(function(index,ele){
+			if($(ele).val()==''){
+				flag=false;
+			}
+		});
+		
+		if(flag){
+			return -1;
+		}
+	}
+	
+
+	//添加cookie  
+	//oDate.toGMTString()转换成字符串
+	function addCookie(key,value,t)
+	{
+		var oDate=new Date();
+		oDate.setDate(oDate.getDate()+t);
+		document.cookie = key+'='+value+";expires=" + oDate.toGMTString();
+	}
 });

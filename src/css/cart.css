@@ -1,0 +1,55 @@
+.wrap{width: 100%;}
+
+.search{height: 95px;width: 1190px;margin:0 auto;position: relative;}
+.search img{position: absolute;left: 0;top:16px;}
+.search a:nth-child(2){color: #000;font-size:26px;font-weight:bold;line-height: 95px;margin-left: -184px;}
+.search a:hover{text-decoration: none;}
+.search input{width:435px;height:30px;background: #fff;border: 2px solid #f50;float: right;margin-top: -62px;margin-right:140px;text-indent:108px;}
+.search #search{width:80px;height: 30px;background: #f50;display: block;float: right;text-align: center;line-height: 30px;color: #fff;font-size: 16px;margin-top: -62px;margin-right:140px;}
+.input {position: relative;width: 515px;float: right;}
+.search span{display: inline;position: absolute;top: -52px;left:30px;width: 12px;height: 12px;background: url(img/searchcart.png) no-repeat -380px -20px;}
+.babya{height: 26px;width: 80px;background: #f5f5f5;display: block;color: #6b6b6b;text-align: center;line-height: 26px;position: absolute;left:-58px;top:-60px;z-index: 1;}
+.icon{height: 0;width: 0;border:6px solid #6b6b6b;border-color: transparent;border-top-color:#6b6b6b;position: absolute;left:4;top:-48px;z-index: 2;}
+.icon2{height: 0;width: 0;border: 6px solid #f5f5f5;border-color: transparent;border-top-color: #f5f5f5;position: absolute;left: 4;top: -50px;z-index: 2;}
+.baby{height:30px;width:130px;background: #f5f5f5;position: absolute;left:-57px;top: -32px;display: none;}
+.baby a{color: #000;text-align: center;line-height: 30px;width: 130px;display: block;border:1px solid #ddd;}
+.baby2{height: 30px;border:1px solid #ddd;border-bottom: none;}
+
+
+.allgoods{color:#C40000;font-size: 20px;font-weight: bold;padding:20px 0 10px 0;}
+
+.cartmessage{width:1190px;height: 500px;margin: 0 auto;}
+.checkbtn p{height: 20px;line-height: 20px;position: relative;}
+.checkbtn label input{position: absolute;left: 0;top: 0;}
+.checkbtn label span{margin-left:20px;line-height: 20px;}
+
+.detailmessage{width: 1190px;height: 120px;margin: 0 auto;border:1px solid #ddd;border-left:none;border-right: none;margin-bottom:20px;}
+.titlemessage{float:right;width:800px;height:30px;margin-top:-30px;}
+.titlemessage p{float: left;margin-left:150px;width: 30px;}
+.btnchecks{height: 120px;line-height: 120px;width:40px;float: left;}
+.goodimg{float:left;padding: 10px;border: 1px solid #d1f1f1;margin-top: 20px;}
+.goodimg img{width: 60px;height: 60px;}
+.introgood{padding:20px 0 0 10px;float: left;width: 206px;}
+
+.unitprice{width:60px;float: left;margin-left:230px;margin-top: -30px;}
+.unitprice p{text-align: center;line-height: 30px;height: 30px;}
+.priceshow{color: #333;font-size: 14px;margin-top:50px;margin-left: -70px;}
+.group{background: #fef4f3;border: 1px solid #ffdbdb;color: #fd7371;font-size: 12px;
+margin-left:-30px;width:52px;}
+.count{float: left;margin-left:100px;margin-top:40px;position: relative;}
+.count input {width: 34px;height: 26px;text-align: center;border:1px solid #333;}
+.count a{width: 26px;height: 26px;display: block;border:1px solid #333;position: absolute;top:0px;text-align: center;line-height: 26px;color:#333;font-size:24px;font-weight:bold;cursor: pointer;}
+.add{left:33px;}
+.reducenum{left:-25px;}
+.count a:hover{color:#C40000;text-decoration:none;}
+
+.total,.operation{width:150px;text-align: center;float: left;margin-left:90px;margin-top: -30px;}
+.money{margin-top:70px;color: #C40000;font-weight: bold;}
+.operation{width:40px;margin-top: -14px;}
+.delete{width:40px;height: 30px;display: block;text-decoration:none;text-align: center;background:#f1f1f1;line-height: 30px;margin-top: 50px;border: 1px solid #ddd;border-radius: 3px;box-shadow:0 0 5px rgba(0,0,0,.2);color: #333;cursor: pointer;}
+.delete:hover{color:#C40000;text-decoration: none;}
+.allbuy{width:1190px;background:#fffbf7;margin-top:30px;box-shadow:0 0 5px rgba(0,0,0,.2);height:50px;}
+.allmoney{color:#333;font-size:20px;float: right;height: 50px;width:300px;line-height: 50px;text-align: left;}
+.allmoney span{color: #ff3c3c;}
+.tobuy{width:80px;height: 50px;display: block;text-align: center;line-height: 50px;color: #fff;background:#ff3c3c;float: right;margin-left: 10px;}
+.tobuy:hover{text-decoration: none;color: #fff;}

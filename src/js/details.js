@@ -220,6 +220,30 @@ jQuery(function($){
 	});
 	
 	$('.bottom').load('footer.html');
+	
+	//存储cookie
+	var arr=[];
+	$('.addcart').find('.addto').on('click',function(){
+		var imgsrc=$bigimg.eq(i).attr('src');
+		var price=$('.summary strong').eq(0).html().slice(1);
+		
+		var good={};
+		
+		good={
+			"title":$('.titleintro h1').html(),
+			"price":price,
+			"count":$('.addcart input').val(),
+			"imgsrc":imgsrc
+		}
+		
+		arr.push(good);
+		
+		arr=JSON.stringify(arr);
+		
+		addCookie('goodcart',arr,2);
+	});
+	
+	
 
 	function prevImg(){
 		$bigimg.eq(i).css('z-index',1).stop().animate({opacity:1}).siblings('img').css({
@@ -228,6 +252,14 @@ jQuery(function($){
 		});
 		$simg.css('border','2px solid #fff').eq(i).css('border','2px solid #C40000');
 	}
+	
+	//添加cookie  
+	//oDate.toGMTString()转换成字符串
+	function addCookie(key,value,t)
+	{
+		var oDate=new Date();
+		oDate.setDate(oDate.getDate()+t);
+		document.cookie = key+'='+value+";expires=" + oDate.toGMTString();
+	}
+
 });
-
-

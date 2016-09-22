@@ -91,6 +91,10 @@ body,html{font-size: 12px;width: 100%;}
 .nut img{float: left;}
 .nut div{width: 1200px;}
 
+.nut_3 div{position: relative;}
+
+.todetail{display: block;width:135px;height:37px;position: absolute;right:86px;top:492px;}
+
 .nut_2{background-image: url(img/nut_3.jpg);}
 .nut_3{background-image: url(img/nuta4.jpg);}
 .nut_4{background-image: url(img/nutb3.jpg);}

@@ -27,4 +27,4 @@
 		.login_window p span {color:#999;line-height: 42px;position: absolute;left:50px;top: 0;}
 		
 		/*移入时背景颜色为c40000*/
-		.login_window button {background:#AF0000;height: 42px;width: 300px;border: none; color: #fff;font-size: 16px; font-weight: bold;margin-top: 20px;}
+		.login_window .loginbtn{background:#AF0000;height: 42px;width: 300px;border: none; color: #fff;font-size: 16px; font-weight: bold;margin-top: 20px;display: block;text-align: center;line-height:42px;}

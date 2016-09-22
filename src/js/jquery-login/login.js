@@ -59,7 +59,7 @@
 			var $username=$('<input type="password"/>').attr('id','password');
 			$p2.append([$label2,$username]);
 
-			var $btn=$('<button/>').attr('type','submit').html('登录');
+			var $btn=$('<a/>').attr('href','list.html').addClass('loginbtn').html('登录');
 			$btn.on('mouseenter',function(){
 				$(this).css('background','#c40000');
 			}).on('mouseleave',function(){

@@ -15,7 +15,7 @@
 			<div class="nav">
 				<div class="nav_div">
 					<p class="home"><span class="glyphicon glyphicon-home"></span><a href="#">天猫首页</a></p>
-					<p>喵，欢迎来天猫<a href="#" class="login">请登录</a><a href="#" class="free">免费注册</a></p>
+					<p>喵，欢迎来天猫<a href="login.html" class="login">请登录</a><a href="#" class="free">免费注册</a></p>
 					<ul class="list">
 						<li>
 							<a href="#">我的淘宝</a>
@@ -51,12 +51,28 @@
 			<div class="register">
 				<p>注册</p>
 				<div class="input">
-					<input type="text" />
+					<input type="text" id="username"/>
 					<span>用户名</span>
+					<div class="hidediv">
+						4-20位字符,可由中文、英文、数字或符号“_”组成
+						<div class="hideicon"></div>
+					</div>
+					<div class="hidediv2">
+						用户名不能为空
+						<div class="hideicon2"></div>
+					</div>
 				</div>
 				<div class="input">
-					<input type="text" />
+					<input type="text" id="phone"/>
 					<span>手机号</span>
+					<div class="hidediv">
+						请填写正确的手机号码，以便接收订单通知，找回密码
+						<div class="hideicon"></div>
+					</div>
+					<div class="hidediv2">
+						格式错误，请输入正确的手机号码
+						<div class="hideicon2"></div>
+					</div>
 				</div>
 				<div class="input">
 					<input type="text" class="mess"/>
@@ -64,16 +80,32 @@
 					<a class="get">获取验证码</a>
 				</div>
 				<div class="input">
-					<input type="text" />
+					<input type="text"  id="password"/>
 					<span>设置密码</span>
+					<div class="hidediv">
+						6-20个大小写英文字母、符号或数字的组合
+						<div class="hideicon"></div>
+					</div>
+					<div class="hidediv2">
+						密码不能为空
+						<div class="hideicon2"></div>
+					</div>
 				</div>
 				<div class="input">
-					<input type="text" />
+					<input type="text" id="resetpassword"/>
 					<span>确认密码</span>
+					<div class="hidediv">
+						请再次输入密码
+						<div class="hideicon"></div>
+					</div>
+					<div class="hidediv2">
+						请再次输入密码
+						<div class="hideicon2"></div>
+					</div>
 				</div>
-				<div class="agree">
+				<div id="agree">
 					<p>点击注册,表示您同意<i>《服务协议》</i></p>
-					<a class="submit">同意协议并注册</a>
+					<a id="submit">同意协议并注册</a>
 				</div>
 			</div>
 			

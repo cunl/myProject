@@ -45,7 +45,6 @@ jQuery(function($){
 	var $bigdiv=$('.bigimg');
 	var $bigimg=$bigdiv.find('img');
 	var $simg=$smallimg.find('img');
-	var i=0;
 	
 	//初始化
 	$bigimg.css('opacity',0).eq(0).css({
@@ -56,30 +55,12 @@ jQuery(function($){
 	
 	//移入小图变到对应的大图
 	$smallimg.on('mouseenter','li',function(){
-		i=$(this).index();
-		prevImg();
-	});
-	
-	//prev按钮
-	$('.prev').on('click',function(){
-		if(i==0){
-			i=$simg.length-1;
-		}else{
-			i--;
-		}
-		
-		prevImg();
-	});
-	
-	//next按钮
-	$('.next').on('click',function(){
-		if(i==$simg.length-1){
-			i=0;
-		}else{
-			i++;
-		}
-		
-		prevImg();
+		var index=$(this).index();
+		$bigimg.eq(index).css('z-index',1).stop().animate({opacity:1}).siblings('img').css({
+			opacity:0,
+			zIndex:0
+		});
+		$simg.css('border','2px solid #fff').eq(index).css('border','2px solid #C40000');
 	});
 	
 	//放大镜
@@ -243,6 +224,15 @@ jQuery(function($){
 		addCookie('goodcart',arr,2);
 	});
 	
+	//添加cookie  
+	//oDate.toGMTString()转换成字符串
+	function addCookie(key,value,t)
+	{
+		var oDate=new Date();
+		oDate.setDate(oDate.getDate()+t);
+		document.cookie = key+'='+value+";expires=" + oDate.toGMTString();
+	}
+	
 	
 
 	function prevImg(){
@@ -252,14 +242,4 @@ jQuery(function($){
 		});
 		$simg.css('border','2px solid #fff').eq(i).css('border','2px solid #C40000');
 	}
-	
-	//添加cookie  
-	//oDate.toGMTString()转换成字符串
-	function addCookie(key,value,t)
-	{
-		var oDate=new Date();
-		oDate.setDate(oDate.getDate()+t);
-		document.cookie = key+'='+value+";expires=" + oDate.toGMTString();
-	}
-
 });

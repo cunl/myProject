@@ -195,7 +195,6 @@ jQuery(function($){
 	
 	//加载底部
 	$('.bottom').load('footer.html');
-	
 });
 
 function flow(){

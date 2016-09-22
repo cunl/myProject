@@ -17,6 +17,7 @@ jQuery(function($){
 		$babya.removeClass('baby2');
 	});
 
+
 	//获取加入购物车的产品
 	var good=getCookie('goodcart');
 	
@@ -118,7 +119,7 @@ jQuery(function($){
 		//点击复选框时商品总计的变化情况和合计的变化情况
 		checkmoney($(this));
 	});
-	
+
 	function init(){
 		//生成一个商品容器
 		var $detailmessage=$('<div/>').addClass('detailmessage');
@@ -209,7 +210,6 @@ jQuery(function($){
 	}
 	
 
-	//------
 	function money(ele){
 		//单价
 		var oneprice=ele.find('.priceshow').html();

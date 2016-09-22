@@ -116,7 +116,7 @@ jQuery(function($){
 				opacity:1
 			});
 		}else if(index==1){
-			$(this).find('img').attr('src','img/tabscar.png');
+			$(this).find('img').attr('src','../img/tabscar.png');
 		}else if(index==6){
 			$('.backcode').css('display','block');
 		}
@@ -130,7 +130,7 @@ jQuery(function($){
 				opacity:0
 			}).remove();
 		}else if(index==1){
-			$(this).find('img').attr('src','img/tabs2.png');
+			$(this).find('img').attr('src','../img/tabs2.png');
 		}else if(index==6){
 			$('.backcode').css('display','none');
 		}
@@ -194,10 +194,7 @@ jQuery(function($){
 	});
 	
 	//加载底部
-	$('.bottom').load('html/footer.html');
-	
-	//加载顶部
-	$('.nav1').load('html/header.html');
+	$('.bottom').load('footer.html');
 });
 
 function flow(){

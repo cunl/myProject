@@ -2,12 +2,13 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
-		<title>商品详情页</title>
+		<title>购物车</title>
+		<link rel="stylesheet" href="../css/reset.css" />
+		<link rel="stylesheet" href="../css/header.css" />
+		<link rel="stylesheet" href="../css/cart.css" />
+		<link rel="stylesheet" href="../js/bootstrap-3.3.0-dist/css/bootstrap.css" />
 		<script type="text/javascript" src="../js/jquery-3.1.0.min.js" ></script>
 		<script type="text/javascript" src="../js/bootstrap-3.3.0-dist/js/bootstrap.js" ></script>
-		<link rel="stylesheet" href="../css/details.css" />
-		<link rel="stylesheet" href="../css/header.css" />
-		<link rel="stylesheet" href="../css/reset.css" />
 	</head>
 	<body>
 		<div class="wrap">
@@ -45,7 +46,7 @@
 							<li><a href="#">企业版</a></li>
 							<li>
 								<a href="#">商家支持</a>
-								<div style="left: -23px;">
+								<div>
 									<dl class="support">
 										<dt class="clearfix">
 											<p>商家:</p>
@@ -68,7 +69,7 @@
 							</li>
 							<li>
 								<a href="#"><span class="glyphicon glyphicon-list"></span>网站导航</a>
-								<div class="hide_div" style="left: -1114px;">
+								<div class="hide_div">
 									<dl class="clearfix">
 										<dt>热点推荐Hot</dt>
 										<dd>
@@ -150,122 +151,91 @@
 										</dd>
 									</dl>
 								</div>							
-								<div class="pic pic2" style="left: 70px;"></div>
+								<div class="pic pic2"></div>
 							</li>
 						</div>
 					</ul>
 				</div>	
-			</div>
-			<div class="title">
-				<a href="#"><img src="../img/login_title.png"/></a>
-				<form action="">
-					<input type="text" class="search"/>
-					<button>搜索</button>
-					<a href="#" class="cart"><span></span><i>我的购物车   &gt;</i></a>
-				</form>
-				<div class="hidecart">
-					<div class="hidetop"></div>
-					<img src="../img/sleep.png"/>
-					<p>购物车中还没有商品，赶紧选购吧</p>
 				</div>
-				<ul>
-					<li><a href="#" class="show">吃瓜群众都在围观</a></li>
-					<li><a href="#">干果礼盒</a></li>
-					<li><a href="#">婚庆食品</a></li>
-					<li><a href="#">杂粮礼盒</a></li>
-					<li><a href="#" class="show">坚果节</a></li>
-					<li><a href="#">好时婚礼季</a></li>
-				</ul>
-			</div>
-			<div class="detail">
-				<div class="topnav">
-					<a class="food">食品饮料</a>
-					<ul>
-						<li><span>&gt; </span><a href="#">休闲食品</a></li>
-						<li><span>&gt; </span><a href="#">坚果炒货</a></li>
-						<li><span>&gt; </span><a href="#">百草味</a></li>
-						<li><span>&gt; </span><a href="#">百草味糖果</a></li>
-					</ul>
+			<div class="search">
+				<a href="#"><img src="../img/listtitle.png"/></a>
+				<a href="#">购物车</a>
+				<div class="input">
+					<input type="text"/>
+					<span></span>
+					<a href="#" id="search">搜索</a>
+					<a href="#" class="babya">宝贝</a>
+					<div class="icon"></div>
+					<div class="icon2"></div>
+					<div class="baby">
+						<a href="#">天猫百草味旗舰店</a>
+					</div>
 				</div>
-				<div class="detailshow">
-					<div class="imgdetail">
-						<div class="showbigimg clearfix">
-							<div class="bigimg">
-								<img src="../img/nutimg1.jpg"/>
-								<img src="../img/nutimg2.jpg"/>
-								<img src="../img/nutimg3.jpg"/>
-								<img src="../img/nutimg4.jpg"/>
-								<img src="../img/nutimg5.jpg"/>
-								<div class="hideshowimg"></div>
-							</div>
-							<ul class="clearfix">
-								<li><a href="#"><img src="../img/nutimg1.jpg"/></a></li>
-								<li><a href="#"><img src="../img/nutimg2.jpg"/></a></li>
-								<li><a href="#"><img src="../img/nutimg3.jpg"/></a></li>
-								<li><a href="#"><img src="../img/nutimg4.jpg"/></a></li>
-								<li><a href="#"><img src="../img/nutimg5.jpg"/></a></li>
-							</ul>
-							<a href="#" class="prev"></a>
-							<a href="#" class="next"></a>
-							<p>商品编号：1150550</p>
-							<p><span class="share"></span><a href="#">分享</a><span class="love"></span><a href="#">关注商品</a></p>
+			</div>
+			<div class="cartmessage">
+				<p class="allgoods">全部商品</p>
+				<div class="cart">
+					<div class="checkbtn">
+						<p>
+							<label for="all">
+								<input type="checkbox" id="all"><span>全选</span>
+							</label>
+						</p>
+						<div class="titlemessage">
+							<p class="pricetitle">单价</p>
+							<p class="countforgood">数量</p>
+							<p class="totalmoney">合计</p>
+							<p class="opera">操作</p>
 						</div>
-						<div class="intro">
-							<div class="titleintro">
-								<h1>【京东超市】百草味 果仁干果特产 炭烧腰果190g/袋 炭烧味坚果零食</h1>
-								<p>健康坚果节<a href="#">【满99减50/188减100】健康坚果节 猛戳这里》</a></p>
+					</div>
+					<div class="message">
+						<div class="detailmessage">
+							<p class="btnchecks"><input type="checkbox" name="goodslist"/></p>
+							<div class="goodimg">
+								<img src="../img/load1.jpg"/>
 							</div>
-							<div class="summary">
-								<p>京东价：<strong>￥18.9</strong><a href="#">(降价通知)</a></p>
-								<div class="give">
-									<p>促销信息：
-										<span>赠品</span>
-										<img class="givegood" src="../img/give.jpg">
-										<span class="colorsame">&times;1</span>
-										<span>(赠完即止)</span>
-									</p>
-									<p>
-										<span>赠品</span>
-										<span class="colorsame">满98.00得赠品，或满158.00得赠品，赠完即止，请在购物车点击领取</span>
-									</p>
-									<a href="#">详情&gt;&gt;</a>
-								</div>
-								<div class="address clearfix">
-									<p>配送至：
-										<select name="address">
-											<option value="深圳">深圳</option>
-											<option value="北京">北京</option>
-											<option value="上海">上海</option>
-											<option value="广州">广州</option>
-											<option value="厦门">厦门</option>
-										</select>
-									</p>
-									<p><strong>有货，</strong>支持 <a href="#">99元免运费 </a>| <a href="#">货到付款</a></p>
-									<p>服务：
-由 京东 发货，供应商提供售后服务。23:00前完成下单,预计<strong>明天(09月21日)</strong>送达</p>
-								</div>
-								<div class="goods">
-									<h2>选择颜色：</h2>
-									<a><img src="../img/smallgood.jpg" />炭烧腰果190g/袋</a>
-									<a><img src="../img/smallgood2.jpg" />巴旦木180g/袋</a>
-									<a><img src="../img/smallgood3.jpg" />紫薯花生128g/袋</a>
-									<a><img src="../img/smallgood4.jpg" />纸皮核桃180g/袋</a>
-								</div>
-								<div class="addcart">
-									<input type="text" value="1"/>
-									<a href="#" class="plus">+</a><a href="#" class="reduce">-</a>
-									<b></b>
-									<button>到货通知</button>
-								</div>
+							<a class="introgood">百草味 富贵开大礼盒 1.73kg/盒</a>
+							<div class="unitprice">
+								<p class="priceshow">188.00</p>
+								<p class="group">团购价</p>
+							</div>
+							<div class="count">
+								<a href="#" class="add">+</a>
+								<a href="#" class="reducenum">-</a>
+								<input type="text" value="1"/>
+							</div>
+							<div class="total">
+								<p class="money">188.00</p>
+							</div>
+							<div class="operation">
+								<a href="#" class="delete">删除</a>
 							</div>
 						</div>
-						<div class="ask">
-							<a href="#" class="img_a"><img src="../img/title.jpg"/></a>
-							<a href="#">百草味官方旗舰店</a>
-							<em>京东自营</em>
-							<a href="#" class="pop pop1"><span class="span1"></span><i>咨询JIMI</i></a>
-							<a href="#" class="pop pop2"><span class="span2"></span><i>进店逛逛</i></a>
-							<a href="#" class="pop pop3"><span class="span3"></span><i>关注店铺</i></a>
+						<div class="detailmessage">
+							<p class="btnchecks"><input type="checkbox" name="goodslist"/></p>
+							<div class="goodimg">
+								<img src="../img/load1.jpg"/>
+							</div>
+							<a class="introgood">百草味 富贵开大礼盒 1.73kg/盒</a>
+							<div class="unitprice">
+								<p class="priceshow">188.00</p>
+								<p class="group">团购价</p>
+							</div>
+							<div class="count">
+								<a href="#" class="add">+</a>
+								<a href="#" class="reducenum">-</a>
+								<input type="text" value="1"/>
+							</div>
+							<div class="total">
+								<p class="money">188.00</p>
+							</div>
+							<div class="operation">
+								<a href="#" class="delete">删除</a>
+							</div>
+						</div>
+						<div class="allbuy clearfix">
+							<p class="allmoney">商品总计：<span>￥0.00</span><a href="#" class="tobuy">去结算</a></p>
+							
 						</div>
 					</div>
 				</div>
@@ -273,5 +243,5 @@
 		</div>
 	</body>
 </html>
-<script type="text/javascript" src="../js/details.js" ></script>
-<script src="../js/header.js"></script>
+<script type="text/javascript" src="../js/cart.js" ></script>
+<script type="text/javascript" src="../js/header.js" ></script>

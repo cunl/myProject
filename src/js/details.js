@@ -1,14 +1,17 @@
 jQuery(function($){
 	//我的购物车
+	var good=getCookie('goodcart');
 	var $hidecart=$('.hidecart');
 	var $cart=$('.cart');
-	$cart.on('mouseenter',function(){
-		$(this).addClass('hidea');
-		$hidecart.css('display','block');
-	}).on('mouseleave',function(){
-		$(this).removeClass('hidea');
-		$hidecart.css('display','none');
-	});
+	if(!good){
+		$cart.on('mouseenter',function(){
+			$(this).addClass('hidea');
+			$hidecart.css('display','block');
+		}).on('mouseleave',function(){
+			$(this).removeClass('hidea');
+			$hidecart.css('display','none');
+		});
+	}
 	
 	$hidecart.on('mouseenter',function(){
 		$cart.addClass('hidea');
@@ -72,7 +75,6 @@ jQuery(function($){
 	var $span=$('<span/>').addClass('spanhide');
 	var $div=$('<div/>').addClass('divhide');
 	var $hideshowimg=$('<div/>').addClass('hideshowimg');
-	
 	
 	$bigdiv.on('mouseenter','img',function(e){
 		
@@ -156,6 +158,38 @@ jQuery(function($){
 		});
 	});
 	
+	
+	//左右两个按钮
+	var i=0;
+	$('.prev').on('click',function(){
+		$bigimg.each(function(index,ele){
+			if($(ele).css('opacity')==1){
+				i=index;
+			}
+		});
+		if(i==0){
+			i=$bigimg.length-1;
+		}else {
+			i--;
+		}
+		prevImg();
+	});
+	
+	$('.next').on('click',function(){
+		$bigimg.each(function(index,ele){
+			if($(ele).css('opacity')==1){
+				i=index;
+			}
+		});
+		if(i==$bigimg.length-1){
+			i=0;
+		}else {
+			i++;
+		}
+		prevImg();
+	});
+		
+		
 //	ajax请求获取产品列表
 	$.ajax({
 		type:"get",
@@ -202,24 +236,73 @@ jQuery(function($){
 	
 	$('.bottom').load('footer.html');
 	
+	var $gooddiv=$('.goods');
+	//初始化
+	var indexdiv;
+	var flag;
+	var iNow;
+	var $firstdiv=$gooddiv.find('div').eq(0);
+	init($firstdiv,-2,true);
+	
+	$gooddiv.on('mouseenter','div',function(){
+		indexdiv=$(this).index();
+		if(!flag){
+			if(indexdiv==1){
+				$(this).find('b').remove();
+				init($(this),-2,true);
+			}
+		}
+		init($(this),-2,false);
+	}).on('mouseleave','div',function(){
+		indexdiv=$(this).index();
+		//已经点击了
+		if(flag){
+			if(indexdiv==iNow){
+				if(iNow==1){
+					
+				}else {
+					$firstdiv.find('b').remove();
+					
+					init($(this),-2,true);
+					var $div=$(this).siblings('div');
+					initout($div);
+				}
+			}else {
+				$(this).find('b').remove();
+				initout($(this));
+			}
+		}else {
+			if(indexdiv==1){
+				
+			}else{
+				$(this).find('b').remove();
+				initout($(this));
+			}
+		}
+	}).on('click','div',function(){
+		init($(this),-2,true);
+		var $div=$(this).siblings('div');
+		initout($div);
+		flag=true;
+		iNow=$(this).index();
+	});
+	
 	//存储cookie
 	var arr=[];
 	$('.addcart').find('.addto').on('click',function(){
-		var imgsrc=$bigimg.eq(i).attr('src');
+		var $img=$gooddiv.find('img').eq(iNow-1);
+		var imgsrc=$img.attr('src');
 		var price=$('.summary strong').eq(0).html().slice(1);
-		
 		var good={};
 		
 		good={
-			"title":$('.titleintro h1').html(),
+			"title":$img.closest('a').text(),
 			"price":price,
 			"count":$('.addcart input').val(),
 			"imgsrc":imgsrc
 		}
-		
+		good=JSON.stringify(good);
 		arr.push(good);
-		
-		arr=JSON.stringify(arr);
 		
 		addCookie('goodcart',arr,2);
 	});
@@ -241,5 +324,53 @@ jQuery(function($){
 			zIndex:0
 		});
 		$simg.css('border','2px solid #fff').eq(i).css('border','2px solid #C40000');
+	}
+	
+	//获得cookie
+	function getCookie(key)
+	{
+		var arr = document.cookie.split("; ");
+	
+		for (var i=0;i<arr.length;i++)
+		{
+			var arr1=arr[i].split('=');
+			if (arr1[0]==key)
+			{
+				return decodeURI(arr1[1]);
+			}
+		}
+		return '';
+	}
+	
+	function init(ele,num,bool){
+		ele.css({
+			border:'2px solid #e4393c',
+			height:28,
+			width:124
+		});
+		ele.find('img').css({
+			margin:'1px 2px 0 1px'
+		});
+		ele.find('a').css('line-height','28px');
+		
+		if(bool){
+			$('<b/>').addClass('first').appendTo(ele).css({
+				bottom:num,
+				right:num
+			});
+		}
+	}
+	
+	function initout(ele){
+		ele.css({
+			border:'1px solid #ccc',
+			height:30,
+			width:126
+		});
+		ele.find('img').css({
+			margin:'2px 2px 0 2px'
+		});
+		ele.find('a').css('line-height','30px');
+		ele.find('b').remove();
 	}
 });

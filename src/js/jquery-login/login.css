@@ -18,7 +18,7 @@
 		.login_btn a:hover{color: #c40000;}
 		
 		.login_window{width: 300px;}
-		.login_window input{width:260px;height: 38px;border: none;float: left; background:#fff url(img/more.jpg) no-repeat right 8px center;text-indent: 10px;}
+		.login_window input{width:258px;height: 38px;border: none;float: left; background:#fff url(img/more.jpg) no-repeat right 8px center;text-indent: 10px;}
 		.login_window .input{background-image:url(img/more_hover.jpg)}
 		.login_window p{width: 300px;height:40px;border: 1px solid #cbcbcb;margin-top: 25px;position: relative;}
 		.login_window p label{height: 40px;width: 40px;float: left;}

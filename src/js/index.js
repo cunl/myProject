@@ -193,8 +193,78 @@ jQuery(function($){
 		$(window).scrollTop(top);
 	});
 	
+	
+	//初始化
+	var $bigbanner=$('.bigbanner');
+	var $btnbanner=$('.btnbanner');
+	$btnbanner.find('a').eq(0).css('opacity',0.5);
+	var $bannershow=$bigbanner.find('#banner').children('div');
+	$bannershow.eq(0).css('opacity',1);
+	var $banner=$('#banner');
+	
+	//移入两个小按钮时对应下标的大图显示，其他隐藏
+	var i=0;
+	$btnbanner.on('mouseenter','a',function(){
+		clearInterval(timer);
+		i=$(this).index();
+		banner($bannershow);
+		btnshow($(this));
+	}).on('mouseleave','a',function(){
+		btnshow($(this));
+		timer=setInterval(timermove,3000);
+	});
+	
+	var timer=setInterval(timermove,3000);
+	//移入大图时清除定时器
+	$banner.on('mouseenter',function(){
+		clearInterval(timer);
+		//当移入的是第一张图片的时候，才让收缩的那张图运动
+		if(i==0){
+			$(this).find('img').animate({
+				left:-328,
+				top:0,
+				height:705
+			});
+		}
+	}).on('mouseleave',function(){
+		timer=setInterval(timermove,3000);
+		if(i==0){
+			$(this).find('img').animate({
+				left:630,
+				top:352,
+				height:0
+			});
+		}
+	});
+	
 	//加载底部
 	$('.bottom').load('footer.html');
+	
+	function timermove(){
+		if(i==$bannershow.length-1){
+			i=0;
+		}else {
+			i++;
+		}
+		banner($bannershow);
+		btnshow($btnbanner.find('a').eq(i));
+	}
+	
+	function banner(ele){
+		ele.eq(i).stop().animate({
+			opacity:1
+		}).siblings('div').stop().animate({
+			opacity:0
+		});
+	}
+	
+	function btnshow(ele){
+		ele.stop().animate({
+			opacity:0.5
+		}).siblings('a').stop().animate({
+			opacity:0.2
+		});
+	}
 });
 
 function flow(){
@@ -219,3 +289,4 @@ function show(obj1,obj2){
 		$(this).css('display','none');
 	});
 }
+

@@ -1,21 +1,26 @@
 jQuery(function($){
-	setInterval(function(){
+	var timer1=setInterval(function(){
 		$('.domove').animate({
 			top:390
 		},2000).animate({
 			top:420
-		},2000)
+		},2000);
 	},100);
 	
 	var i=0;
+	var num=0;
 	var $img=$('.bigimg');
-	var timer=setInterval(picmove,2000);
-	var timer2=setInterval(domove2,2000);
+	var $phone=$('.phone');
+	var $imgsmall=$phone.find('img');
+	$imgsmall.css('left',270).eq(0).css('left',0);
+	
+	var timer2=setInterval(picmove,2000);
+	var timer3=setInterval(domove2,2000);
 	
 	$('.banner').on('mouseenter',function(){
-		clearInterval(timer);
+		clearInterval(timer2);
 	}).on('mouseleave',function(){
-		timer=setInterval(picmove,2000);
+		timer2=setInterval(picmove,2000);
 	});
 	
 	var $btn=$('.btn');
@@ -26,12 +31,6 @@ jQuery(function($){
 		next();
 	});
 	
-	var $phone=$('.phone');
-	var $imgsmall=$phone.find('img');
-	$imgsmall.css('left',270).eq(0).css('left',0);
-	var num=0;
-	
-
 	function picmove(){
 		if(i==$img.length-1){
 			i=0;

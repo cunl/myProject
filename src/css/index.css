@@ -79,8 +79,17 @@ body,html{font-size: 12px;width: 100%;}
 .img_all{position: relative;height: 200px;width: 1600px;}
 .img_all tr{position: absolute;left: 0;top:-10px;}
 
-.banner{height: 705px;margin-top:-10px; }
-.banner{background: url(img/banner.jpg) no-repeat center center;}
+.bigbanner{position: relative;height: 705px;width:1263px;margin-top:-10px;}
+.banner,.banner2{height: 705px;position:absolute;left: 0;top: 0;opacity: 0;width: 1263px;}
+.banner{background: url(img/banner.jpg) no-repeat center center;z-index: 1;}
+.bigbanner .moveimg {height: 705px;width: 1263px;position: relative;margin: 0 auto;}
+.bigbanner .moveimg img{height:0px;position: absolute;left:630px;top:352px;}
+.banner2{background:url(img/banner3.jpg) no-repeat center center;width: 1263px;}
+.btnbanner{width: 1263px;height:40px;background:rgba(0,0,0,0.2);position: absolute;left: 0;bottom: 0;z-index:2;}
+.btnbanner div{width:160px;height: 40px;margin:0 auto;}
+.btnbanner a{color: #fff;line-height:40px;text-align: center;height:40px;width: 80px;display: block;float: left;margin: o auto;background:#000;opacity: 0.2;z-index: 2;}
+.btnbanner a:hover{color: #f1f1f1;text-decoration: none;}
+#banner{z-index: 0;}
 
 .discount{position:relative;left: -320px;width:1800px;}
 .discount img{float: left;}

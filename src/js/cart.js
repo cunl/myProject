@@ -17,45 +17,46 @@ jQuery(function($){
 		$babya.removeClass('baby2');
 	});
 
-
 	//获取加入购物车的产品
 	var good=getCookie('goodcart');
+	good=good.slice(1);
+	good=good.slice(0,-1);
 	
-	console.log(good)
+	var arr=good.split('},{');
 	
-	good=good.slice(2);
-	good=good.slice(0,-2);
-	
-	var arr=good.split(',');
-	var collarr=[];
-	var collarr2=[];
+	var arr1=[];
+	var allarr=[];
 	
 	$.map(arr,function(item,index){
-		var arrmessage=item.split(':');
-		
-		arrmessage[0]=arrmessage[0].slice(1);
-		arrmessage[0]=arrmessage[0].slice(0,-1);
-		
-		arrmessage[1]=arrmessage[1].slice(1);
-		arrmessage[1]=arrmessage[1].slice(0,-1);
-		
-		collarr.push(arrmessage[0]);
-		collarr2.push(arrmessage[1]);
+		arr1=item.split(',');
+		var goods={};
+		$.each(arr1, function(idx,item) {
+			var arr2=[];
+			arr2=item.split(':');
+			
+			
+			arr2[0]=arr2[0].slice(1);
+			arr2[0]=arr2[0].slice(0,-1);
+			
+			arr2[1]=arr2[1].slice(1);
+			arr2[1]=arr2[1].slice(0,-1);
+			
+			goods[arr2[0]]=arr2[1];
+			
+			
+			
+		});
+		allarr.push(goods);
 	});
-	
-	var allarr=[];
-	$.map(collarr, function(item,index) {
-		var json={};
-		json[item]=collarr2[index];
-		
-		allarr.push(json);
-	});
-	
-	
+
 	//生成html结构
 	var $message=$('.message');
-	init();
 	
+	$.map(allarr, function(item,index) {
+		console.log(item)
+		init(item);
+	});
+
 	var $detail=$('.detailmessage');
 	var goodmoney=0;
 	var moneyall=0;
@@ -120,7 +121,7 @@ jQuery(function($){
 		checkmoney($(this));
 	});
 
-	function init(){
+	function init(item){
 		//生成一个商品容器
 		var $detailmessage=$('<div/>').addClass('detailmessage');
 		//生成每个商品的复选框
@@ -132,12 +133,12 @@ jQuery(function($){
 		var $btnchecks=$('<p/>').addClass('btnchecks').append($goodslist);
 		//生成商品图片
 		var $goodimg=$('<div/>').addClass('goodimg');
-		var $img=$('<img/>').attr('src',allarr[3].imgsrc).appendTo($goodimg);
+		var $img=$('<img/>').attr('src',item.imgsrc).appendTo($goodimg);
 		//生成商品详情介绍
-		var $introgood=$('<a/>').addClass('introgood').html(allarr[0].title);
+		var $introgood=$('<a/>').addClass('introgood').html(item.title);
 		//生成商品价格
 		var $unitprice=$('<div/>').addClass('unitprice');
-		var goodprice=parseFloat(allarr[1].price);
+		var goodprice=parseFloat(item.price);
 		goodprice=goodprice.toFixed(2);
 		var $priceshow=$('<p/>').addClass('priceshow').html(goodprice);
 		var $group=$('<p/>').addClass('group').html('团购价');
@@ -148,13 +149,13 @@ jQuery(function($){
 		var $reduce=$('<a/>').addClass('reducenum').html('-');
 		var $input2=$('<input/>').attr({
 			type:'text',
-			value:allarr[2].count
+			value:item.count
 		});
 		$count.append([$add,$reduce,$input2]);
 		
 		//生成合计价格
 		var $total=$('<div/>').addClass('total');
-		var goodcount=allarr[2].count;
+		var goodcount=item.count;
 		var money=goodprice*goodcount;
 		money=money.toFixed(2);
 		var $money=$('<p/>').addClass('money').html(money).appendTo($total);
@@ -208,7 +209,6 @@ jQuery(function($){
 		}
 		return '';
 	}
-	
 
 	function money(ele){
 		//单价
@@ -220,7 +220,7 @@ jQuery(function($){
 	}
 	
 	function ifallchecked(){
-		var alllength=$checkbox.length;
+		var alllength=$message.find(':checkbox').length;
 		var checklength=$message.find(':checked').length;
 		$all.prop('checked',alllength==checklength);
 	}

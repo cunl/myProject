@@ -47,8 +47,7 @@ jQuery(function($){
 	var $input=$('.input');
 	$input.on('focus','input',function(){
 		$parent=$(this).closest('.input');
-		index=$parent.index();
-		
+		index=$parent.index();		
 		//当输入框中的内容还没有改变时，但已经有光标的时候，让黄色提示框隐藏
 		if($(this).val()==''){
 			$parent.find('.hidediv2').css({
@@ -79,7 +78,6 @@ jQuery(function($){
 	}).on('blur','input',function(){
 		$parent=$(this).closest('.input');
 		index=$parent.index();
-		
 
 		//当光标移开时，如果移开的当前输入框内容为空则显示黄色提示框
 		if(index!=2){
@@ -147,10 +145,21 @@ jQuery(function($){
 	});
 	
 	//提交注册
+	var arr=[];
 	$('#agree').on('click',function(){
 		var $allinput=$input.find('input');
 		var i=getindex($allinput);
 		if(i==-1 && username==true && password==true && phone==true && repassword==true){
+			var json={};
+			json.username=$username.val();
+			json.password=$password.val();
+			json.phone=$phone.val();
+			
+			json=JSON.stringify(json);
+			arr.push(json);
+			
+			addCookie('register',arr,2);
+			
 			$('#submit').attr('href','../html/login.html');
 			$input.find('input').each(function(index,ele){
 				$(ele).val('');
@@ -194,5 +203,14 @@ jQuery(function($){
 		if(flag){
 			return -1;
 		}
+	}
+	
+	//添加cookie  
+	//oDate.toGMTString()转换成字符串
+	function addCookie(key,value,t)
+	{
+		var oDate=new Date();
+		oDate.setDate(oDate.getDate()+t);
+		document.cookie = key+'='+value+";expires=" + oDate.toGMTString();
 	}
 });

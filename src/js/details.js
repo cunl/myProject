@@ -1,6 +1,7 @@
 jQuery(function($){
 	//我的购物车
 	var good=getCookie('goodcart');
+	//购物车里面有内容时更新页面我的购物车不会出现下拉部分
 	var $hidecart=$('.hidecart');
 	var $cart=$('.cart');
 	if(!good){
@@ -30,11 +31,13 @@ jQuery(function($){
 	}).trigger('blur');
 	
 	var $input=$('.addcart').find('input');
-	$('.plus').on('click',function(){
+	$('.plus').on('click',function(e){
+		e.preventDefault();
 		var value=parseInt($input.val())+1;
 		$input.val(value);
 	});
-	$('.reduce').on('click',function(){
+	$('.reduce').on('click',function(e){
+		e.preventDefault();
 		var value=0;
 		if($input.val()==1){
 			var value=1;

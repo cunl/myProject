@@ -65,14 +65,16 @@ jQuery(function($){
 	var $input;
 	$detail.each(function(index,ele){
 		//加按钮
-		$(ele).find('.add').on('click',function(){
+		$(ele).find('.add').on('click',function(e){
+			e.preventDefault();
 			btncheck($(ele),true);
 			//点击加按钮的时候如果复选框是选中状态的话，商品总价就变化
 			checkmoney($(this),true);
 		});
 		
 		//减按钮
-		$(ele).find('.reducenum').on('click',function(){
+		$(ele).find('.reducenum').on('click',function(e){
+			e.preventDefault();
 			btncheck($(ele),false);
 			//点击减按钮的时候如果复选框是选中状态的话，商品总价就变化
 			checkmoney($(this),true);
@@ -127,7 +129,7 @@ jQuery(function($){
 		//生成每个商品的复选框
 		var $goodslist=$('<input/>').attr({
 			name:"goodslist",
-			type:"checkbox"
+			type:"checkbox",
 		});
 		//生成存放复选框的p标签
 		var $btnchecks=$('<p/>').addClass('btnchecks').append($goodslist);

@@ -33,7 +33,7 @@
 .showbigimg{width: 350px;padding:14px;background: #fff;position: relative;float: left;}
 .showbigimg .bigimg{height:350px;width: 350px;position: relative;margin-bottom: 20px;}
 .showbigimg .bigimg img{position: absolute;left: 0;top: 0;}
-.hideshowimg{height:400px;width: 400px;border: 1px solid #ccc;position: absolute;left:380px;top: 0;z-index: 1;background: #fff;overflow: hidden;box-shadow:0 0 5px rgba(0,0,0,.2);}
+.hideshowimg{height:400px;width: 400px;border: 1px solid #ccc;position: absolute;left:380px;top: 0;z-index: 1;background: #fff;overflow: hidden;box-shadow:0 0 5px rgba(0,0,0,.2);z-index: 1;}
 .divhide{height:380px;width:380px;margin: 10px;overflow: hidden;position: relative;}
 .hideshowimg img{position: absolute;left: 0;top: 0;}
 .spanhide{height: 50px;width: 50px;background: #DF9C1F;opacity: 0.5;display: block;position: absolute;z-index: 2;}
@@ -70,7 +70,7 @@
 .give a{margin-left: 80px;}
 .givegood{height:25px;width:25px;vertical-align:middle;}
 
-.address {margin-top: 20px;}
+.address {margin-top: 20px;z-index:0;}
 .address p{float: left;}
 .address p strong{color: #666;margin-left: 4px;font-weight: bold;}
 .address p a:hover{color:#e4393c;}

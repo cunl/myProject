@@ -56,8 +56,8 @@
 
 			var $p2=$('<p/>');
 			var $label2=$('<label/>').attr('for','password');
-			var $username=$('<input type="password"/>').attr('id','password');
-			$p2.append([$label2,$username]);
+			var $password=$('<input type="password"/>').attr('id','password');
+			$p2.append([$label2,$password]);
 
 			var $btn=$('<a/>').attr('href','list.html').addClass('loginbtn').html('登录');
 			$btn.on('mouseenter',function(){
@@ -80,6 +80,72 @@
 			$loginbtn=$('<p/>').addClass('login_btn').append([$a1,$a2]);
 		
 			self.append([$title,$tips,$icon,$window,$loginbtn]);
+			
+			var message=getCookie('register');
+	
+			message=message.slice(1);
+			message=message.slice(0,-1);
+			
+			var arr=message.split('},{');
+			
+			var arr1=[];
+			var allarr=[];
+			
+			$.map(arr,function(item,index){
+				arr1=item.split(',');
+				var goods={};
+				$.each(arr1, function(idx,item) {
+					var arr2=[];
+					arr2=item.split(':');
+					
+					arr2[0]=arr2[0].slice(1);
+					arr2[0]=arr2[0].slice(0,-1);
+					
+					arr2[1]=arr2[1].slice(1);
+					arr2[1]=arr2[1].slice(0,-1);
+					
+					goods[arr2[0]]=arr2[1];
+				});
+				allarr.push(goods);
+			});
+			
+			var $tips=$('<p/>').addClass('tipsmessage').html('用户名或密码错误！请重新输入');
+			
+			$.map(allarr, function(item,index) {
+				$('.loginbtn').on('click',function(){
+					if(($username.val()==item.username || $username.val()==item.phone) && $password.val() ==item.password){
+						$tips.remove();
+						$(this).attr('href','list.html');
+					}else {
+						$tips.appendTo('.login_btn');
+					}
+				});
+			});
+			
+			$username.on('focus',function(){
+				$('.login_window').find('span').css('display','none');
+			}).on('blur',function(){
+				if($(this).val()==''){
+					$('.login_window').find('span').css('display','block');
+				}
+			});
 		}
 	}
 })(jQuery);
+
+
+//获得cookie
+function getCookie(key)
+{
+	var arr = document.cookie.split("; ");
+
+	for (var i=0;i<arr.length;i++)
+	{
+		var arr1=arr[i].split('=');
+		if (arr1[0]==key)
+		{
+			return decodeURI(arr1[1]);
+		}
+	}
+	return '';
+}

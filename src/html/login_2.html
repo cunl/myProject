@@ -63,9 +63,6 @@
 				if(($username.val()==item.username || $username.val()==item.phone) && $password.val() ==item.password){
 					$tips.remove();
 					$(this).attr('href','list.html');
-					
-					
-					
 				}else {
 					$tips.appendTo('.login_btn');
 				}
@@ -78,7 +75,7 @@
 			if($(this).val()==''){
 				$('.login_window').find('span').css('display','block');
 			}
-		})
+		});
 		
 		//获得cookie
 		function getCookie(key)
